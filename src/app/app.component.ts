@@ -6,18 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Darkest';
-  ticks = 0;
-  timeLeft: number = 60;
+  title = 'DarkestDungeon';
   //Resources
   iron: number = 0;
   wood: number = 0;
   gold: number = 0;
   //ResourcesPerSecond
-  ironPS: number = 1;
-  woodPS: number = 2;
-  goldPS: number = 0.25;
-  interval: any;
+  ironPS: number = 3;
+  woodPS: number = 5;
+  goldPS: number = 1;
+  //names
+  ironAxeText: string = "Get iron axes (10 iron)";
+  ironHoeText: string = "";
+
+  //
 
   //Science
   ironAxeDeveloped: boolean = false;
@@ -26,23 +28,20 @@ export class AppComponent {
   }
   
   startTimer() {
-    this.interval = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
+    let interval: any;
+    interval = setInterval(() => {
         this.wood = this.wood + this.woodPS;
         this.iron = this. iron + this.ironPS;
-        this.gold = this.gold + this.ironPS;
-      } else {
-        this.timeLeft = 60;
-      }
+        this.gold = this.gold + this.goldPS;
     }, 1000)
 
   }
   ironAxe(){
     if(this.iron >= 10 && this.ironAxeDeveloped == false){
       this.iron = this.iron - 10;
-      this.ironPS = this.woodPS + 1;
+      this.woodPS = this.woodPS + 1;
       this.ironAxeDeveloped = true;
+      this.ironAxeText = 'Iron Axes developed';
     }
   }
 }

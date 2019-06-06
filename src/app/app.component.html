@@ -12,16 +12,24 @@
 
 <body>
     <div class="row">
+        <div class="col-3 border border-white ml-3"><h2>{{title}}</h2></div>
+        <div class="col-6 row resourceContainer">
+            <li class="metal resource"><b>Iron:</b> {{iron}}(+{{ironPS}} PS)</li>
+            <li class="wood resource"><b>Wood:</b> {{wood}}(+{{woodPS}} PS)</li>
+            <li class="metal resource"><b>Gold:</b> {{gold}}(+{{goldPS}} PS)</li>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-3">
-            <p>{{timeLeft}} Seconds Left....</p>
+            
         </div>
         <div class="col-6">
             <div>
-                <p>Iron: {{iron}}</p>
-                <p>Wood: {{wood}}</p>
-                <p>Gold: {{gold}}</p>
-                <button (click)='ironAxe()'>Get iron axes (10 iron)</button>
+                <h2 style="text-decoration: underline">Science</h2>
+                <button (click)='ironAxe()' tooltip="Get +1 wood per second">{{ironAxeText}}</button>
             </div>
+        </div>
+        <div class="col-3">
         </div>
     </div>
 </body>

@@ -1,0 +1,18 @@
+.title{
+    border-color: white;
+    border-width: 1px;
+}
+.resourceContainer{
+    overflow: auto;
+}
+.resource{
+    padding-left: 5px;
+    list-style-type: none;
+    margin: 0;
+}
+.metal{
+    color:lightgray;
+}
+.wood{
+    color:lightsalmon;
+}
