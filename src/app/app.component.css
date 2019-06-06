@@ -2,6 +2,11 @@
     border-color: white;
     border-width: 1px;
 }
+.menuItem{
+    padding-top: 5px;
+    list-style-type: none;
+    margin: 0;
+}
 .resourceContainer{
     overflow: auto;
 }

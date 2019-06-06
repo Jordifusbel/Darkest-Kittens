@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'DarkestDungeon';
+  title = 'Darkest Kittens';
   //Resources
   iron: number = 0;
   wood: number = 0;
@@ -18,8 +18,6 @@ export class AppComponent {
   //names
   ironAxeText: string = "Get iron axes (10 iron)";
   ironHoeText: string = "";
-
-  //
 
   //Science
   ironAxeDeveloped: boolean = false;
