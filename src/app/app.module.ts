@@ -6,17 +6,35 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ScienceComponent } from './components/science/science.component';
+import { BuildingsComponent } from './components/buildings/buildings.component';
+import { KittensComponent } from './components/kittens/kittens.component';
+import { ResourcesComponent } from './components/resources/resources.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScienceComponent,
+    BuildingsComponent,
+    KittensComponent,
+    ResourcesComponent,
+    UserProfileComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+     AngularFirestoreModule,
+     AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
