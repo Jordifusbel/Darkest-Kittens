@@ -1,6 +1,9 @@
 .building{
 
 }
+.mine{
+    visibility: hidden;
+}
 hr {
     display: block;
     height: 1px;

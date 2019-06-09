@@ -53,6 +53,12 @@ export class ResourcesComponent implements OnInit {
     this.service.$stonePS.subscribe(stonePS => {
       this.stonePS = stonePS;
     });
+    this.service.$iron.subscribe(iron => {
+      this.iron = iron;
+    });
+    this.service.$ironPS.subscribe(ironPS => {
+      this.ironPS = ironPS;
+    });
   }
   startTimer() {
     let interval: any;
@@ -66,6 +72,7 @@ export class ResourcesComponent implements OnInit {
       this.service.$stonePS.next(this.stonePS);
       this.iron = this.iron + this.ironPS;
       this.service.$iron.next(this.iron);
+      this.service.$ironPS.next(this.ironPS);
       this.meat = this.meat + this.meatPS;
       this.service.$meat.next(this.meat);
       this.milk = this.milk + this.milkPS;
@@ -82,6 +89,9 @@ export class ResourcesComponent implements OnInit {
     //TODO Iniciar recursos visibles
     if (this.stone > 0) {
       this.stoneDev = true;
+    }
+    if (this.iron > 0) {
+      this.ironDev = true;
     }
   }
   developResource(name: string) {

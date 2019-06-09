@@ -1,2 +1,7 @@
 <h2 style="text-decoration: underline">Science:</h2>
-<button (click)='ironAxe()' tooltip="Get +1 wood per second">{{ironAxeText}}</button>
+<div class="tech mine">
+    <h3>Get to the mine!</h3>
+    <p>With this technology you and the boys will be able to get some stone from your mines</p>
+    <button class="btn btn-primary btn-sm" [disabled]="actualWood <= mWCost && actualStone <= mSCost && mDeveloped == true" (click)="mines()">Investigate ({{mWCost}} wood + {{mSCost}} stone)</button>
+    <hr />
+</div>

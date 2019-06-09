@@ -16,14 +16,30 @@ export class BuildingsComponent implements OnInit {
   actualStonePS: number;
   actualIronPS: number;
   //Lumber Camp
-  LCWCost: number = 10;
-  LClvl: number = 0;
+  lCWCost: number = 10;
+  lCLvl: number = 0;
   //Quarry
-  QWCost: number = 50;
-  Qlvl: number = 0;
+  qWCost: number = 50;
+  qLvl: number = 0;
+  //Mine
+  mWCost: number = 100;
+  mSCost: number = 50;
+  mLvl: number = 0;
   constructor(private service: ResourcesService) { }
 
   ngOnInit() {
+    if(localStorage.getItem("buildingData") != undefined){
+      console.log("Hola");
+      let values = JSON.parse(localStorage.getItem("buildingData"));
+      console.log(values);
+      this.lCWCost = parseInt(values.lCWCost);
+      this.lCLvl = values.lCLvl;
+      // this.qWCost = 
+      // this.qLvl = 
+      // this.mWCost = 
+      // this.mSCost = 
+      // this.mLvl = 
+    }
     this.service.$wood.subscribe(wood => {
       this.actualWood = wood;
     });
@@ -43,21 +59,43 @@ export class BuildingsComponent implements OnInit {
       this.actualIronPS = ironPS;
     })
   }
+  ngOnDestroy(): void {
+    let buildingData = {
+        "lCWCost": this.lCWCost,
+        "lCLvl": this.lCLvl,
+        "qWCost": this.qWCost,
+        "qLvl": this.qLvl,
+        "mWCost": this.mWCost,
+        "mSCost": this.mSCost,
+        "mLvl": this.mLvl
+    };
+    localStorage.setItem("buildingData", JSON.stringify(buildingData));
+  }
 
   buildLC() {
-    if (this.LCWCost <= this.actualWood) {
-      this.LClvl = this.LClvl + 1;
-      this.service.$wood.next(this.actualWood - this.LCWCost);
+    if (this.lCWCost <= this.actualWood) {
+      this.lCLvl = this.lCLvl + 1;
+      this.service.$wood.next(this.actualWood - this.lCWCost);
       this.service.$woodPS.next(this.actualWoodPS + 5);
-      this.LCWCost = this.LCWCost * 2;
+      this.lCWCost = this.lCWCost * 2;
     }
   }
   buildQ() {
-    if (this.QWCost <= this.actualWood) {
-      this.Qlvl = this.Qlvl + 1;
-      this.service.$wood.next(this.actualWood - this.QWCost);
-      this.service.$stonePS.next(this.actualStonePS + 5);
-      this.QWCost = this.QWCost * 2;
+    if (this.qWCost <= this.actualWood) {
+      this.qLvl = this.qLvl + 1;
+      this.service.$wood.next(this.actualWood - this.qWCost);
+      this.service.$stonePS.next(this.actualStonePS + 3);
+      this.qWCost = this.qWCost * 2;
+    }
+  }
+  buildM() {
+    if (this.mWCost <= this.actualWood && this.mSCost <= this.actualStone) {
+      this.mLvl = this.mLvl + 1;
+      this.service.$wood.next(this.actualWood - this.mWCost);
+      this.service.$stone.next(this.actualStone - this.mSCost);
+      this.service.$ironPS.next(this.actualIronPS + 2);
+      this.mWCost = this.mWCost * 2;
+      this.mSCost = this.mSCost * 2;
     }
   }
 }
