@@ -21,17 +21,3 @@
     list-style-type: none;
     margin: 0;
 }
-.resourceContainer{
-    overflow: auto;
-}
-.resource{
-    padding-left: 5px;
-    list-style-type: none;
-    margin: 0;
-}
-.metal{
-    color:lightgray;
-}
-.wood{
-    color:lightsalmon;
-}

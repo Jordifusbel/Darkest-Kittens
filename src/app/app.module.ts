@@ -1,3 +1,4 @@
+import { ResourcesService } from './components/resources/resources.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -42,7 +43,7 @@ import { HomeComponent } from './components/home/home.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [ResourcesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

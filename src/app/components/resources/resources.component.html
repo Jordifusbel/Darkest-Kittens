@@ -1,3 +1,6 @@
-<p>
-  resources works!
-</p>
+<div class="resourceContainer">
+  <li *ngIf="woodDev" class="wood resource"><b>Wood:</b> {{wood}}(+{{woodPS}} PS)</li>
+  <li *ngIf="stoneDev" class="metal resource"><b>Stone:</b> {{stone}}(+{{stonePS}} PS)</li>
+  <li *ngIf="ironDev" class="metal resource"><b>Iron:</b> {{iron}}(+{{ironPS}} PS)</li>
+  <li *ngIf="goldDev" class="metal resource"><b>Gold:</b> {{gold}}(+{{goldPS}} PS)</li>
+</div>

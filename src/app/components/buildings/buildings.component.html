@@ -2,6 +2,12 @@
 <div class="building">
     <h3>Lumber camp ({{LClvl}})</h3>
     <p>This building increments your wood gained per second. Each level upgrades even more this production</p>
-    <button class="btn btn-primary btn-sm" (click)="buildLC()">Build ({{LCcost}})</button>
+    <button class="btn btn-primary btn-sm" [disabled]="actualWood < LCWCost" (click)="buildLC()">Build ({{LCWCost}} wood)</button>
 </div>
+<hr/>
+<div class="building">
+        <h3>Quarry ({{Qlvl}})</h3>
+        <p>This building increments your stone gained per second. Each level upgrades even more this production</p>
+        <button class="btn btn-primary btn-sm" [disabled]="actualWood < QWCost" (click)="buildQ()">Build ({{QWCost}} wood)</button>
+    </div>
 <hr/>
