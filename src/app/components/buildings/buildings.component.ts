@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buildings.component.css']
 })
 export class BuildingsComponent implements OnInit {
-
+  LCcost: number = 0;
+  LClvl: number = 0;
   constructor() { }
 
   ngOnInit() {
   }
 
+  buildLC(){
+
+  }
 }

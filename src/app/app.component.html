@@ -24,31 +24,41 @@
             <p>Buildings queue:</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-3 border border-white">
+    <div class="row centerBody">
+        <div class="col-3 border-left border-right border-white">
             <ul>
-                <li class="menuItem"><button [routerLink]="['buildings']"><b>Buildings</b></button></li>
-                <li class="menuItem"><button [routerLink]="['science']"><b>Science</b></button></li>
-                <li class="menuItem"><button [routerLink]="['buildings']"><b>Kittens</b></button></li>
-                <li class="menuItem"><button [routerLink]="['buildings']"><b>Quests</b></button></li>
-                <li class="menuItem"><button [routerLink]="['buildings']"><b>Workshop</b></button></li>
+                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
+                        [routerLink]="['buildings']"><b>Buildings</b></button></li>
+                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
+                        [routerLink]="['science']"><b>Science</b></button></li>
+                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
+                        [routerLink]="['kittens']"><b>Kittens</b></button></li>
+                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
+                        [routerLink]="['quests']"><b>Quests</b></button></li>
+                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
+                        [routerLink]="['workshop']"><b>Workshop</b></button></li>
             </ul>
         </div>
-        <div class="col-6">
+        <div class="col-6 content">
             <div>
                 <router-outlet></router-outlet>
             </div>
         </div>
-        <div class="col-3 border border-white">
+        <div class="col-3 border-left border-right border-white">
             <div>
                 <p>Quest progress:</p>
             </div>
         </div>
     </div>
-    <div class="row">
-
+    <div class="row footer">
+        <div class="col-3 border border-white">
+        </div>
+        <div class="col-6 border-bottom border-top border-white">
+        </div>
+        <div class="col-3 border border-white">
+            <app-user-profile></app-user-profile>
+        </div>
     </div>
-    <app-user-profile></app-user-profile>
 </body>
 
 </html>

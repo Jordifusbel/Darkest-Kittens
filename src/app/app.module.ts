@@ -16,6 +16,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { QuestsComponent } from './components/quests/quests.component';
+import { WorkshopComponent } from './components/workshop/workshop.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     BuildingsComponent,
     KittensComponent,
     ResourcesComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    QuestsComponent,
+    WorkshopComponent,
+    HomeComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

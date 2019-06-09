@@ -2,6 +2,20 @@
     border-color: white;
     border-width: 1px;
 }
+.centerBody{
+    height: auto;
+}
+.content{
+    overflow: auto;
+    margin-top: 0px;
+    margin-bottom: 0px; 
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+ }
 .menuItem{
     padding-top: 5px;
     list-style-type: none;
