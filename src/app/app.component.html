@@ -15,12 +15,12 @@
         <div class="col-3 border border-white">
             <h2>{{title}}</h2>
         </div>
-        <div class="col-6 row resourceContainer border-bottom border-top border-white">
+        <div class="col-7 row resourceContainer border-bottom border-top border-white">
             <li class="metal resource"><b>Iron:</b> {{iron}}(+{{ironPS}} PS)</li>
             <li class="wood resource"><b>Wood:</b> {{wood}}(+{{woodPS}} PS)</li>
             <li class="metal resource"><b>Gold:</b> {{gold}}(+{{goldPS}} PS)</li>
         </div>
-        <div class="col-3 border border-white">
+        <div class="col-2 border border-white">
             <p>Buildings queue:</p>
         </div>
     </div>
@@ -39,12 +39,12 @@
                         [routerLink]="['workshop']"><b>Workshop</b></button></li>
             </ul>
         </div>
-        <div class="col-6 content">
+        <div class="col-7 content">
             <div>
                 <router-outlet></router-outlet>
             </div>
         </div>
-        <div class="col-3 border-left border-right border-white">
+        <div class="col-2 border-left border-right border-white">
             <div>
                 <p>Quest progress:</p>
             </div>
@@ -53,9 +53,9 @@
     <div class="row footer">
         <div class="col-3 border border-white">
         </div>
-        <div class="col-6 border-bottom border-top border-white">
+        <div class="col-7 border-bottom border-top border-white">
         </div>
-        <div class="col-3 border border-white">
+        <div class="col-2 border border-white">
             <app-user-profile></app-user-profile>
         </div>
     </div>

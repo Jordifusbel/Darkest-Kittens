@@ -13,4 +13,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
   }
 
+  saveGame(){
+    alert("This app can't save your game yet :(");
+  }
 }

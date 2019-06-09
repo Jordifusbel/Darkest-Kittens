@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ResourcesComponent } from './../resources/resources.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { resource } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-buildings',
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buildings.component.css']
 })
 export class BuildingsComponent implements OnInit {
-  LCcost: number = 0;
+  // @Input() wood: number;
+  // @Input() iron: number;
+  // @Input() gold: number;
+  //Lumber Camp
+  LCWcost: number = 0;
   LClvl: number = 0;
   constructor() { }
 
@@ -14,6 +20,8 @@ export class BuildingsComponent implements OnInit {
   }
 
   buildLC(){
-
+    if(this.LCWcost < 5){
+      this.LClvl = this.LClvl + 1;
+    }
   }
 }
