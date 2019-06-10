@@ -28,7 +28,7 @@ export class ResourcesComponent implements OnInit {
   coalDev: boolean = false;
   steelDev: boolean = false;
   //Resources Per Second
-  woodPS: number = 1;
+  woodPS: number = 2;
   stonePS: number = 0;
   ironPS: number = 0;
   meatPS: number = 0;

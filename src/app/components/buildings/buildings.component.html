@@ -2,21 +2,34 @@
 <div class="building">
     <h3>Lumber camp ({{lCLvl}})</h3>
     <p>This building increments your wood gained per second. Each level upgrades even more this production</p>
-    <button class="btn btn-primary btn-sm" [disabled]="actualWood < lCWCost" (click)="buildLC()">Build ({{lCWCost}}
+    <button class="btn btn-primary btn-sm" [disabled]="disabledLC()" (click)="buildLC()">Build ({{lCWCost}}
         wood)</button>
     <hr />
 </div>
 <div class="building">
     <h3>Quarry ({{qLvl}})</h3>
     <p>This building increments your stone gained per second. Each level upgrades even more this production</p>
-    <button class="btn btn-primary btn-sm" [disabled]="actualWood < qWCost" (click)="buildQ()">Build ({{qWCost}}
+    <button class="btn btn-primary btn-sm" [disabled]="disabledQ()" (click)="buildQ()">Build ({{qWCost}}
         wood)</button>
     <hr />
 </div>
 <div *ngIf="mDev" class="building">
     <h3>Mine ({{mLvl}})</h3>
     <p>This building increments your iron gained per second. Each level upgrades even more this production</p>
-    <button class="btn btn-primary btn-sm" [disabled]="actualWood <= mWCost && actualStone <= mSCost"
-        (click)="buildM()">Build ({{mWCost}} wood + {{mSCost}} stone)</button>
+    <button class="btn btn-primary btn-sm" [disabled]="disabledM()" (click)="buildM()">Build ({{mWCost}} wood + {{mSCost}} stone)</button>
+    <hr />
+</div>
+<div *ngIf="gDev" class="building">
+    <h3>Kitten Hall ({{gLvl}})</h3>
+    <p>In this hall your kittens will wait patiently for you to decide in which quest you send them, and the bigger the hall the most kittens it can hold!</p>
+    <button class="btn btn-primary btn-sm" [disabled]="disabledG()"
+        (click)="buildG()">Build ({{gWCost}} wood + {{gSCost}} stone + {{gICost}})</button>
+    <hr />
+</div>
+<div *ngIf="aDev" class="building">
+    <h3>Armory ({{mLvl}})</h3>
+    <p>With this building, you will be able to equip your adventurers kittens with T H I C C armor and train them in the ways of the knights and the pawladins</p>
+    <button class="btn btn-primary btn-sm" [disabled]="disabledA()"
+        (click)="buildA()">Build ({{aWCost}} wood + {{aSCost}} stone + {{aICost}})</button>
     <hr />
 </div>

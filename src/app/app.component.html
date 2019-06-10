@@ -19,8 +19,7 @@
             <app-resources></app-resources>
         </div>
         <div class="col-2 border border-white">
-            <p>Development time to finish:</p>
-            <p>{{pendingTime}}</p>
+            <app-science-time></app-science-time>
         </div>
     </div>
     <div class="row centerBody">
@@ -38,24 +37,19 @@
                         [routerLink]="['workshop']"><b>Workshop</b></button></li>
             </ul>
         </div>
-        <div class="col-7 content">
+        <div class="col-9 content">
             <div>
                 <router-outlet></router-outlet>
-            </div>
-        </div>
-        <div class="col-2 border-left border-right border-white">
-            <div>
-                <p>Quest progress:</p>
             </div>
         </div>
     </div>
     <div class="row footer">
         <div class="col-3 border border-white">
+            <app-user-profile></app-user-profile>
         </div>
         <div class="col-7 border-bottom border-top border-white">
         </div>
         <div class="col-2 border border-white">
-            <app-user-profile></app-user-profile>
         </div>
     </div>
 </body>

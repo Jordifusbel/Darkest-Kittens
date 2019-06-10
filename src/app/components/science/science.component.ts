@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourcesService } from '../resources/resources.service';
+import { ScienceService } from './science.service';
+import { ObjectUnsubscribedError } from 'rxjs';
 
 @Component({
   selector: 'app-science',
@@ -18,9 +20,22 @@ export class ScienceComponent implements OnInit {
   //Mine
   mWCost: number = 100;
   mSCost: number = 50;
+  mDevTime: number = 60;
   mDeveloped: boolean = false;
+  //Guild
+  gWCost: number = 1000;
+  gSCost: number = 2000;
+  gICost: number = 500;
+  gDevTime: number = 400;
+  gDeveloped: boolean = false;
+  //Armory
+  aWCost: number = 500;
+  aSCost: number = 500;
+  aICost: number = 100;
+  aDevTime: number = 200;
+  aDeveloped: boolean = false;
 
-  constructor(private service: ResourcesService) { }
+  constructor(private service: ResourcesService, private timeService: ScienceService) { }
 
   ngOnInit() {
     this.service.$wood.subscribe(wood => {
@@ -47,13 +62,52 @@ export class ScienceComponent implements OnInit {
         this.mDeveloped = true;
       }
     }
+    if (localStorage.getItem("aDev") != undefined) {
+      let mineVal = JSON.parse(localStorage.getItem("aDev"));
+      if (mineVal.mDev == "true") {
+        this.mDeveloped = true;
+      }
+    }
+  }
+  startTimer(time, techName) {
+    setInterval(() => {
+      if (time > 0) {
+        time--;
+        this.mDevTime = time;
+        this.timeService.$mDevTime.next(this.mDevTime);
+      }
+      if (time = 1) {
+        localStorage.setItem(techName, "true")
+      }
+    }, 1000)
   }
   mines() {
     if (this.mDeveloped == false && this.mWCost <= this.actualWood && this.mSCost <= this.actualStone) {
-      localStorage.setItem("mDev", "true")
+      this.mDeveloped = true;
       this.service.$wood.next(this.actualWood - this.mWCost);
       this.service.$stone.next(this.actualStone - this.mSCost);
-      this.mDeveloped = true;
+      localStorage.setItem("mDeveloped", "true")
+      // this.startTimer(this.mDevTime, "mDeveloped");
+    }
+  }
+  guild() {
+    if (this.gDeveloped == false && this.gWCost <= this.actualWood && this.gSCost <= this.actualStone && this.gICost <= this.actualIron) {
+      this.gDeveloped = true;
+      this.service.$wood.next(this.actualWood - this.gWCost);
+      this.service.$stone.next(this.actualStone - this.gSCost);
+      this.service.$iron.next(this.actualIron - this.gICost);
+      localStorage.setItem("gDeveloped", "true")
+      // this.startTimer(this.gDevTime, "gDeveloped");
+    }
+  }
+  armory() {
+    if (this.aDeveloped == false && this.aWCost <= this.actualWood && this.aSCost <= this.actualStone && this.aICost <= this.actualIron) {
+      this.aDeveloped = true;
+      this.service.$wood.next(this.actualWood - this.aWCost);
+      this.service.$stone.next(this.actualStone - this.aSCost);
+      this.service.$iron.next(this.actualIron - this.aICost);
+      localStorage.setItem("aDeveloped", "true")
+      // this.startTimer(this.aDevTime, "aDeveloped");
     }
   }
 }

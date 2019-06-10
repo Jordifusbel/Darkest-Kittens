@@ -20,6 +20,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { QuestsComponent } from './components/quests/quests.component';
 import { WorkshopComponent } from './components/workshop/workshop.component';
 import { HomeComponent } from './components/home/home.component';
+import { ScienceTimeComponent } from './components/science/science-time/science-time.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeComponent } from './components/home/home.component';
     UserProfileComponent,
     QuestsComponent,
     WorkshopComponent,
-    HomeComponent
+    HomeComponent,
+    ScienceTimeComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
