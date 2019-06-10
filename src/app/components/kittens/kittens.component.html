@@ -1,1 +1,24 @@
 <h2 style="text-decoration: underline">Kittens:</h2>
+<div>
+    <div class="row">
+        <div class="col-6">Available jobs:</div>
+        <div class="col-6">Available kittens:</div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="jobsContainer">
+                <li *ngFor="let job of jobs" class="jobs">
+                    <button class="btn btn-primary btn-sm" (click)="getProf(job)">Get {{job}}</button> or
+                    <button class="btn btn-primary btn-sm" (click)="loseProf(job)">Lose {{job}}</button>
+                </li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul>
+                <li *ngFor="let kitten of kittens; let i=index">
+                    Kitten {{i}} => class: {{kitten.profession}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

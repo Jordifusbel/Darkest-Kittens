@@ -1,0 +1,9 @@
+.jobsContainer{
+    padding: 0;
+}
+.jobs{
+    padding: 2px;
+    padding-top: 5px;
+    list-style-type: none;
+    margin: 0;
+}

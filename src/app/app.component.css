@@ -10,6 +10,9 @@
 .centerBody{
     height: 75vh;
 }
+.menuList{
+    padding: 0;
+}
 .content{
     height: 75vh;
     overflow-y: scroll;    

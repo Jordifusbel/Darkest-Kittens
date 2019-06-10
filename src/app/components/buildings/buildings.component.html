@@ -21,13 +21,13 @@
 </div>
 <div *ngIf="gDev" class="building">
     <h3>Kitten Hall ({{gLvl}})</h3>
-    <p>In this hall your kittens will wait patiently for you to decide in which quest you send them, and the bigger the hall the most kittens it can hold!</p>
+    <p>In this hall your kittens will wait patiently for you to decide in which quest you send them, and the bigger the hall the most kittens it can hold!(Holds 2 kittens per level)</p>
     <button class="btn btn-primary btn-sm" [disabled]="disabledG()"
         (click)="buildG()">Build ({{gWCost}} wood + {{gSCost}} stone + {{gICost}} iron)</button>
     <hr />
 </div>
 <div *ngIf="aDev" class="building">
-    <h3>Armory ({{mLvl}})</h3>
+    <h3>Armory ({{aLvl}})</h3>
     <p>With this building, you will be able to equip your adventurers kittens with T H I C C armor and train them in the ways of the knights and the pawladins</p>
     <button class="btn btn-primary btn-sm" [disabled]="disabledA()"
         (click)="buildA()">Build ({{aWCost}} wood + {{aSCost}} stone + {{aICost}} iron)</button>

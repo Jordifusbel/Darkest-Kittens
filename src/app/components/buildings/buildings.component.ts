@@ -1,3 +1,4 @@
+import { BuildingsService } from './buildings.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ResourcesService } from '../resources/resources.service';
 
@@ -16,29 +17,29 @@ export class BuildingsComponent implements OnInit {
   actualStonePS: number;
   actualIronPS: number;
   //Lumber Camp
-  lCWCost: number = 9;
+  lCWCost: number = 9;//9
   lCLvl: number = 0;
   //Quarry
-  qWCost: number = 45;
+  qWCost: number = 45;//45
   qLvl: number = 0;
   //Mine
   mDev: boolean = false;
-  mWCost: number = 100;
-  mSCost: number = 50;
+  mWCost: number = 100;//100
+  mSCost: number = 50;//50
   mLvl: number = 0;
   //Armory
   aDev: boolean = false;
-  aWCost: number = 250;
-  aSCost: number = 100;
-  aICost: number = 100;
+  aWCost: number = 250;//250
+  aSCost: number = 100;//100
+  aICost: number = 75;//75
   aLvl: number = 0;
   //Guild
   gDev: boolean = false;
-  gWCost: number = 1000;
-  gSCost: number = 500;
-  gICost: number = 100
+  gWCost: number = 1000;//1000
+  gSCost: number = 500;//500
+  gICost: number = 100;//100
   gLvl: number = 0;
-  constructor(private service: ResourcesService) { }
+  constructor(private service: ResourcesService, private buildingService: BuildingsService) { }
 
   ngOnInit() {
     if (localStorage.getItem("buildingData") != undefined) {
@@ -164,11 +165,12 @@ export class BuildingsComponent implements OnInit {
     }
   }
   disabledA() {
-    return !(this.actualWood <= this.aWCost && this.actualStone <= this.aSCost && this.actualIron <= this.aICost);
+    return !(this.actualWood >= this.aWCost && this.actualStone >= this.aSCost && this.actualIron >= this.aICost);
   }
   buildG() {
     if (this.gWCost <= this.actualWood && this.gSCost <= this.actualStone && this.gICost <= this.actualIron) {
       this.gLvl = this.gLvl + 1;
+      this.buildingService.$gLvl.next(this.gLvl);    
       this.service.$wood.next(this.actualWood - this.gWCost);
       this.service.$stone.next(this.actualStone - this.gSCost);
       this.service.$stone.next(this.actualIron - this.gICost);
@@ -178,6 +180,6 @@ export class BuildingsComponent implements OnInit {
     }
   }
   disabledG() {
-    return !(this.actualWood <= this.gWCost && this.actualStone <= this.gSCost && this.actualIron <= this.gICost);
+    return !(this.actualWood >= this.gWCost && this.actualStone >= this.gSCost && this.actualIron >= this.gICost);
   }
 }
