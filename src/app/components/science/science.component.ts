@@ -41,11 +41,16 @@ export class ScienceComponent implements OnInit {
     this.service.$ironPS.subscribe(ironPS => {
       this.actualIronPS = ironPS;
     })
+    if (localStorage.getItem("mDev") != undefined) {
+      let mineVal = JSON.parse(localStorage.getItem("mDev"));
+      if (mineVal.mDev == "true") {
+        this.mDeveloped = true;
+      }
+    }
   }
   mines() {
-    debugger
     if (this.mDeveloped == false && this.mWCost <= this.actualWood && this.mSCost <= this.actualStone) {
-      //show Mine building
+      localStorage.setItem("mDev", "true")
       this.service.$wood.next(this.actualWood - this.mWCost);
       this.service.$stone.next(this.actualStone - this.mSCost);
       this.mDeveloped = true;

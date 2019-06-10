@@ -13,7 +13,7 @@
         wood)</button>
     <hr />
 </div>
-<div class="building mine">
+<div *ngIf="mDev" class="building">
     <h3>Mine ({{mLvl}})</h3>
     <p>This building increments your iron gained per second. Each level upgrades even more this production</p>
     <button class="btn btn-primary btn-sm" [disabled]="actualWood <= mWCost && actualStone <= mSCost"

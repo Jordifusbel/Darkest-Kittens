@@ -22,28 +22,35 @@ export class BuildingsComponent implements OnInit {
   qWCost: number = 50;
   qLvl: number = 0;
   //Mine
+  mDev: boolean = false;
   mWCost: number = 100;
   mSCost: number = 50;
   mLvl: number = 0;
   constructor(private service: ResourcesService) { }
 
   ngOnInit() {
-    if(localStorage.getItem("buildingData") != undefined){
+    if (localStorage.getItem("buildingData") != undefined) {
       console.log("Hola");
       let values = JSON.parse(localStorage.getItem("buildingData"));
       console.log(values);
       this.lCWCost = parseInt(values.lCWCost);
       this.lCLvl = values.lCLvl;
-      // this.qWCost = 
-      // this.qLvl = 
-      // this.mWCost = 
-      // this.mSCost = 
-      // this.mLvl = 
+      this.qWCost = values.qWCost;
+      this.qLvl = values.qLvl;
+      this.mWCost = values.mWCost;
+      this.mSCost = values.mSCost;
+      this.mLvl = values.mLvl;
+    }
+    if (localStorage.getItem("mDev") != undefined) {
+      let mineVal = JSON.parse(localStorage.getItem("mDev"));
+      if (mineVal == true) {
+        this.mDev = true;
+      }
     }
     this.service.$wood.subscribe(wood => {
       this.actualWood = wood;
     });
-    this.service.$woodPS.subscribe(woodPS =>{
+    this.service.$woodPS.subscribe(woodPS => {
       this.actualWoodPS = woodPS;
     })
     this.service.$stone.subscribe(stone => {
@@ -55,19 +62,19 @@ export class BuildingsComponent implements OnInit {
     this.service.$iron.subscribe(iron => {
       this.actualIron = iron;
     });
-    this.service.$ironPS.subscribe(ironPS =>{
+    this.service.$ironPS.subscribe(ironPS => {
       this.actualIronPS = ironPS;
     })
   }
   ngOnDestroy(): void {
     let buildingData = {
-        "lCWCost": this.lCWCost,
-        "lCLvl": this.lCLvl,
-        "qWCost": this.qWCost,
-        "qLvl": this.qLvl,
-        "mWCost": this.mWCost,
-        "mSCost": this.mSCost,
-        "mLvl": this.mLvl
+      "lCWCost": this.lCWCost,
+      "lCLvl": this.lCLvl,
+      "qWCost": this.qWCost,
+      "qLvl": this.qLvl,
+      "mWCost": this.mWCost,
+      "mSCost": this.mSCost,
+      "mLvl": this.mLvl
     };
     localStorage.setItem("buildingData", JSON.stringify(buildingData));
   }
