@@ -3,10 +3,15 @@
     border-width: 1px;
     height: 10vh;
 }
+.titleContent{
+    height: 10vh;
+    overflow-y: scroll;    
+}
 .centerBody{
     height: 75vh;
 }
 .content{
+    height: 75vh;
     overflow-y: scroll;    
     margin-top: 0px;
     margin-bottom: 0px; 
@@ -22,4 +27,16 @@
     padding-top: 5px;
     list-style-type: none;
     margin: 0;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

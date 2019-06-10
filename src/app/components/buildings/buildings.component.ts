@@ -22,18 +22,18 @@ export class BuildingsComponent implements OnInit {
   qWCost: number = 45;
   qLvl: number = 0;
   //Mine
-  mDev: boolean = true;
+  mDev: boolean = false;
   mWCost: number = 100;
   mSCost: number = 50;
   mLvl: number = 0;
   //Armory
-  aDev: boolean = true;
+  aDev: boolean = false;
   aWCost: number = 250;
   aSCost: number = 100;
   aICost: number = 100;
   aLvl: number = 0;
   //Guild
-  gDev: boolean = true;
+  gDev: boolean = false;
   gWCost: number = 1000;
   gSCost: number = 500;
   gICost: number = 100
@@ -42,9 +42,7 @@ export class BuildingsComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem("buildingData") != undefined) {
-      console.log("Hola");
       let values = JSON.parse(localStorage.getItem("buildingData"));
-      console.log(values);
       this.lCWCost = parseInt(values.lCWCost);
       this.lCLvl = values.lCLvl;
       this.qWCost = values.qWCost;
@@ -52,21 +50,29 @@ export class BuildingsComponent implements OnInit {
       this.mWCost = values.mWCost;
       this.mSCost = values.mSCost;
       this.mLvl = values.mLvl;
+      this.aWCost = values.aWCost;
+      this.aSCost = values.aSCost;
+      this.aICost = values.aICost;
+      this.aLvl = values.aLvl;
+      this.gWCost = values.gWCost;
+      this.gSCost = values.gSCost;
+      this.gICost = values.gICost;
+      this.gLvl = values.gLvl;
     }
     if (localStorage.getItem("mDeveloped") != undefined) {
-      let mineVal = JSON.parse(localStorage.getItem("mDev"));
+      let mineVal = JSON.parse(localStorage.getItem("mDeveloped"));
       if (mineVal == true) {
         this.mDev = true;
       }
     }
     if (localStorage.getItem("aDeveloped") != undefined) {
-      let mineVal = JSON.parse(localStorage.getItem("aDev"));
+      let mineVal = JSON.parse(localStorage.getItem("aDeveloped"));
       if (mineVal == true) {
         this.aDev = true;
       }
     }
     if (localStorage.getItem("gDeveloped") != undefined) {
-      let mineVal = JSON.parse(localStorage.getItem("gDev"));
+      let mineVal = JSON.parse(localStorage.getItem("gDeveloped"));
       if (mineVal == true) {
         this.gDev = true;
       }
@@ -120,7 +126,7 @@ export class BuildingsComponent implements OnInit {
     }
   }
   disabledLC() {
-    return this.actualWood <= this.lCWCost;
+    return !(this.actualWood >= this.lCWCost);
   }
   buildQ() {
     if (this.qWCost <= this.actualWood) {
@@ -131,7 +137,7 @@ export class BuildingsComponent implements OnInit {
     }
   }
   disabledQ() {
-    return this.actualWood <= this.qWCost;
+    return !(this.actualWood >= this.qWCost);
   }
   buildM() {
     if (this.mWCost <= this.actualWood && this.mSCost <= this.actualStone) {
@@ -158,7 +164,7 @@ export class BuildingsComponent implements OnInit {
     }
   }
   disabledA() {
-    return this.actualWood <= this.aWCost && this.actualStone <= this.aSCost && this.actualIron <= this.aICost;
+    return !(this.actualWood <= this.aWCost && this.actualStone <= this.aSCost && this.actualIron <= this.aICost);
   }
   buildG() {
     if (this.gWCost <= this.actualWood && this.gSCost <= this.actualStone && this.gICost <= this.actualIron) {
@@ -172,6 +178,6 @@ export class BuildingsComponent implements OnInit {
     }
   }
   disabledG() {
-    return this.actualWood <= this.gWCost && this.actualStone <= this.gSCost && this.actualIron <= this.gICost;
+    return !(this.actualWood <= this.gWCost && this.actualStone <= this.gSCost && this.actualIron <= this.gICost);
   }
 }

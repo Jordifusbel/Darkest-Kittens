@@ -9,5 +9,6 @@ export class AppComponent {
   //Title
   title = 'Darkest Kittens';
   ngOnInit() {
+    localStorage.clear()
   }
 }

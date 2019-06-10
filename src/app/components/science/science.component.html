@@ -2,18 +2,18 @@
 <div class="tech mine">
     <h3>Get to the mine!:</h3>
     <p>With this technology you and the boys will be able to get some stone from your mines</p>
-    <button class="btn btn-primary btn-sm" [disabled]="actualWood <= mWCost && actualStone <= mSCost && mDeveloped == true" (click)="mines()">Investigate ({{mWCost}} wood + {{mSCost}} stone, {{mDevTime}} seconds)</button>
+    <button class="btn btn-primary btn-sm" [disabled]="disabledM()" (click)="mines()">Investigate ({{mWCost}} wood + {{mSCost}} stone, {{mDevTime}} seconds)</button>
     <hr />
 </div>
 <div class="tech guild">
     <h3>Unite the bravest kittens:</h3>
     <p>Only the braves kittens will be able to go outside of the village to engage on dangerous quests. This will be the start of your adventures!</p>
-    <button class="btn btn-primary btn-sm" [disabled]="actualWood <= gWCost && actualStone <= gSCost && actualIron <= gICost && gDeveloped == true" (click)="guild()">Investigate ({{gWCost}} wood + {{gSCost}} stone + {{gICost}} iron, {{gDevTime}} seconds)</button>
+    <button class="btn btn-primary btn-sm" [disabled]="disabledG()" (click)="guild()">Investigate ({{gWCost}} wood + {{gSCost}} stone + {{gICost}} iron, {{gDevTime}} seconds)</button>
     <hr />
 </div>
 <div class="tech armory">
     <h3>Sharpen your paws:</h3>
     <p>Overconfidence is an slow and insidious killer, is best to be prepared for the danger ahead. In the armory you will be able to equip your adventurers with armors and train pawladins and knights</p>
-    <button class="btn btn-primary btn-sm" [disabled]="actualWood <= aWCost && actualStone <= aSCost && actualIron <= aICost && aDeveloped == true" (click)="armory()">Investigate ({{aWCost}} wood + {{aSCost}} stone + {{aICost}} iron, {{aDevTime}} seconds)</button>
+    <button class="btn btn-primary btn-sm" [disabled]="disabledA()" (click)="armory()">Investigate ({{aWCost}} wood + {{aSCost}} stone + {{aICost}} iron, {{aDevTime}} seconds)</button>
     <hr />
 </div>

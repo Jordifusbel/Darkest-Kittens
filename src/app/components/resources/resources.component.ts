@@ -28,14 +28,14 @@ export class ResourcesComponent implements OnInit {
   coalDev: boolean = false;
   steelDev: boolean = false;
   //Resources Per Second
-  woodPS: number = 2;
-  stonePS: number = 0;
-  ironPS: number = 0;
-  meatPS: number = 0;
-  milkPS: number = 0;
-  goldPS: number = 0;
-  coalPS: number = 0;
-  steelPS: number = 0;
+  woodPS: number = 50;//2
+  stonePS: number = 0;//0
+  ironPS: number = 0;//0
+  meatPS: number = 0;//0
+  milkPS: number = 0;//0
+  goldPS: number = 0;//0
+  coalPS: number = 0;//0
+  steelPS: number = 0;//0
 
   constructor(private service: ResourcesService) { }
 
@@ -61,8 +61,7 @@ export class ResourcesComponent implements OnInit {
     });
   }
   startTimer() {
-    let interval: any;
-    interval = setInterval(() => {
+    setInterval(() => {
       this.checkDev();//Iniciar recursos visibles
       this.wood = this.wood + this.woodPS;
       this.service.$wood.next(this.wood);
