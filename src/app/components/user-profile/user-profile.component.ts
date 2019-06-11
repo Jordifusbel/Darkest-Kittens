@@ -3,6 +3,7 @@ import { AuthService } from './../../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from './user-profile.service';
 import { ResourcesService } from '../resources/resources.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,7 +13,8 @@ import { ResourcesService } from '../resources/resources.service';
 export class UserProfileComponent implements OnInit {
   data: any = {}
 
-  constructor(public auth: AuthService, private profileService: UserProfileService, private resourcesService: ResourcesService) { }
+  constructor(public auth: AuthService, private profileService: UserProfileService, private resourcesService: ResourcesService,
+    private firestore: AngularFirestore) { }
 
   ngOnInit() {
     this.resourcesService.$wood.subscribe(wood => {
@@ -40,14 +42,17 @@ export class UserProfileComponent implements OnInit {
     alert("Game saved C:");
   }
   loadGame() {
-    let data;
-    let promesa = new Promise((resolve, reject) => { data = this.profileService.getData() });
-    promesa.then(async (response) => { await this.loadGameData(response); });
+    // let data;
+    // let promesa = new Promise((resolve, reject) => { data = this.profileService.getData() });
+    // promesa.then(async (response) => { await this.loadGameData(response); });
+    var userUid = localStorage.getItem('userUid');
+    console.log(userUid);
+    this.firestore.collection('savedGame').doc(userUid).get().subscribe(docs => { 
+      var data = docs.get('datos');
+      this.loadGameData(data);
+    });
   }
   loadGameData(allData) {
-    if(allData == undefined){
-      this.loadGameData(allData)
-    }
     this.resourcesService.$wood.next(allData.actualWood);
     this.resourcesService.$stone.next(allData.actualStone);
     this.resourcesService.$iron.next(allData.actualIron);

@@ -24,11 +24,6 @@ export class UserProfileService {
 
   public getData() {
     // subscribimos al authService
-    this.authService.user$.subscribe(data => {
-      // obtenemos el valor del uid del usuario
-      var userUid = data.uid;
-
-      this.firestore.collection('savedGame').doc(userUid).get().subscribe(docs => { return docs.get('datos') });
-    });
+ 
   }
 }

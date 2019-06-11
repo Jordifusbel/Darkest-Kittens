@@ -43,6 +43,7 @@ export class AuthService {
         displayName: user.displayName, 
         photoURL: user.photoURL
       } 
+      localStorage.setItem('userUid',data.uid);
       return userRef.set(data, { merge: true })
     }
     async signOut() {
