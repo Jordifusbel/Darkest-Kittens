@@ -25,16 +25,31 @@
     <div class="row centerBody">
         <div class="col-3 border-left border-right border-white">
             <ul class="menuList">
-                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
-                        [routerLink]="['buildings']"><b>Buildings</b></button></li>
-                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
-                        [routerLink]="['science']"><b>Science</b></button></li>
-                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
-                        [routerLink]="['kittens']"><b>Kittens</b></button></li>
-                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
-                        [routerLink]="['quests']"><b>Quests</b></button></li>
-                <li class="menuItem"><button class="btn btn-primary btn-lg btn-block"
-                        [routerLink]="['workshop']"><b>Workshop</b></button></li>
+                <li class="menuItem">
+                    <button class="btn btn-primary btn-lg btn-block" [routerLink]="['buildings']">
+                        <b>Buildings</b>
+                    </button>
+                </li>
+                <li class="menuItem">
+                    <button class="btn btn-primary btn-lg btn-block" [routerLink]="['science']">
+                        <b>Science</b>
+                    </button>
+                </li>
+                <li class="menuItem">
+                    <button class="btn btn-primary btn-lg btn-block" [routerLink]="['kittens']">
+                        <b>Kittens</b>
+                    </button>
+                </li>
+                <li class="menuItem">
+                    <button class="btn btn-primary btn-lg btn-block" [routerLink]="['quests']">
+                        <b>Quests</b>
+                    </button>
+                </li>
+                <li class="menuItem">
+                    <button class="btn btn-primary btn-lg btn-block" [routerLink]="['workshop']">
+                        <b>Workshop</b>
+                    </button>
+                </li>
             </ul>
         </div>
         <div class="col-9 content">
@@ -48,6 +63,8 @@
             <app-user-profile></app-user-profile>
         </div>
         <div class="col-7 border-bottom border-top border-white">
+            <app-quest-time></app-quest-time>
+
         </div>
         <div class="col-2 border border-white">
         </div>

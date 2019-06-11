@@ -15,6 +15,7 @@
     <p>Welcome, {{ user.displayName }}!</p>
     <img [src]="user.photoURL">
     <button class="btn btn-primary btn-sm" (click)="saveGame()">Save Game</button>
+    <button class="btn btn-primary btn-sm" (click)="loadGame()">Load Game</button>
     <button class="btn btn-primary btn-sm" (click)="auth.signOut()">Logout</button>
   </div>
 </ng-template>

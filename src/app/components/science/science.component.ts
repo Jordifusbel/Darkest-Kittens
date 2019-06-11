@@ -73,8 +73,7 @@ export class ScienceComponent implements OnInit {
     setInterval(() => {
       if (time > 0) {
         time--;
-        this.mDevTime = time;
-        this.timeService.$mDevTime.next(this.mDevTime);
+        this.timeService.$time.next(time);
       }
       if (time == 1) {
         localStorage.setItem(techName, "true")

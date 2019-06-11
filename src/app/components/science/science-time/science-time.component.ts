@@ -1,5 +1,4 @@
 import { ScienceService } from './../science.service';
-import { ScienceComponent } from './../science.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,7 +11,7 @@ export class ScienceTimeComponent implements OnInit {
   constructor(private service: ScienceService) { }
 
   ngOnInit() {
-    this.service.$mDevTime.subscribe(time => {
+    this.service.$time.subscribe(time => {
       this.timePending = time;
     });
   }

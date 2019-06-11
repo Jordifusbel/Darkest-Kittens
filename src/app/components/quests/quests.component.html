@@ -1,1 +1,28 @@
 <h2 style="text-decoration: underline">Quests:</h2>
+<p>All your kittens will go to the selected quest. Remember only one quest at a time can be engaged.</p>
+<div *ngIf="partyAvailable()">
+    <h3>Party:</h3>
+    <ul>
+        <li *ngFor="let kitten of party; let i=index">
+            Kitten {{i}} => class: {{kitten.profession}}
+        </li>
+    </ul>
+    <div class="quest">
+        <h3>Explore the forest({{wTime}} seconds):</h3>
+        <p>Send your party to the forest and make them get some wood for you. Make sure they don't record a video with any corpse.</p>
+        <button class="btn btn-primary btn-sm" [disabled]="disabledW()" (click)="sendW()">Send party</button>
+        <hr />
+    </div>
+    <div class="quest">
+        <h3>Pick up some rocks({{sTime}} seconds):</h3>
+        <p>Send your party to get that bread( stone bread of course).</p>
+        <button class="btn btn-primary btn-sm" [disabled]="disabledS()" (click)="sendS()">Send party</button>
+        <hr />
+    </div>
+    <div class="quest">
+        <h3>Iron see the need({{iTime}} seconds):</h3>
+        <p>Your kittens may not see the uses of iron, but you know better. Make them gather some for you.</p>
+        <button class="btn btn-primary btn-sm" [disabled]="disabledI()" (click)="sendI()">Send party</button>
+        <hr />
+    </div>
+</div>

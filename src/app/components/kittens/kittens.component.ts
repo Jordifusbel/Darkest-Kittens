@@ -1,6 +1,7 @@
 import { BuildingsService } from './../buildings/buildings.service';
 import { Component, OnInit } from '@angular/core';
 import { Kitten } from './kitten.interface';
+import { KittensService } from './kittens.service';
 
 @Component({
   selector: 'app-kittens',
@@ -20,7 +21,7 @@ export class KittensComponent implements OnInit {
   // ferDev: boolean = false;
   // magDev: boolean = false;
   // cleDev: boolean = false;
-  constructor(private service: BuildingsService) { }
+  constructor(private service: BuildingsService, private kittensService: KittensService) { }
 
   ngOnInit() {
     if (localStorage.getItem("kittensData") != undefined) {
@@ -58,6 +59,7 @@ export class KittensComponent implements OnInit {
       if (jobFound) {
         jobFound.profession = rol;
       }
+      this.kittensService.$kittens.next(this.kittens);  
     }
   }
   loseProf(rol: string) {
@@ -66,6 +68,7 @@ export class KittensComponent implements OnInit {
       if (jobLost) {
         jobLost.profession = "unemployed";
       }
+      this.kittensService.$kittens.next(this.kittens);
     }
   }
 }

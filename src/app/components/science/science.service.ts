@@ -5,6 +5,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ScienceService {
-  $mDevTime: Subject<number> = new Subject<number>();
+  $time: Subject<number> = new Subject<number>();
   constructor() { }
 }
