@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { AuthService } from './../../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from './user-profile.service';
@@ -41,9 +42,12 @@ export class UserProfileComponent implements OnInit {
   loadGame() {
     let data;
     let promesa = new Promise((resolve, reject) => { data = this.profileService.getData() });
-    promesa.then((success) => { this.loadGameData(success); });
+    promesa.then(async (response) => { await this.loadGameData(response); });
   }
   loadGameData(allData) {
+    if(allData == undefined){
+      this.loadGameData(allData)
+    }
     this.resourcesService.$wood.next(allData.actualWood);
     this.resourcesService.$stone.next(allData.actualStone);
     this.resourcesService.$iron.next(allData.actualIron);
